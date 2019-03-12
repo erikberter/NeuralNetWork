@@ -34,6 +34,7 @@ Entre los fallos de la anterior resolución se encontraban la complejidad que su
 
 ## Posibles cosas a hacer
 
+- Aplicar métodos para conseguir entrelazar neuronas de formas más diversas a solo un complete entre diferentes layers
 - Aplicar el momentum
 - Aplicar algun algoritmo ADAM
 - Crear la script que permita multiples lenguajes

@@ -81,7 +81,7 @@ int netHandler::startCycle(int dataFileP){
 
 	for (int nTestFilesi = 0; nTestFilesi < nTestFiles[dataFileP]; nTestFilesi++) {
 		std::ofstream outfile;
-		outfile.open("./results/" + resultFileN[dataFileP], std::ios_base::app);
+		outfile.open("./data/results/" + resultFileN[dataFileP], std::ios_base::app);
 		std::cout << "Grabando el file " << resultNames[dataFileP][nTestFilesi] << std::endl;
 
 		std::string line = "";

@@ -13,12 +13,8 @@ net::net(std::vector<int> layersi, double alphaI,double momentumI,  std::vector<
 	momentum = momentumI;
 	neuronWM = neuronWMi;
 	testIters = testItersi;
-	layers = std::vector<int>();
-	actFunctions = std::vector<int>();
-	for (int layerIHi = 0; layerIHi < layersi.size(); layerIHi++){
-		layers.push_back(layersi[layerIHi]);
-		actFunctions.push_back(actFunctionNI[layerIHi]);
-	}
+	layers = layersi;
+	actFunctions = actFunctionNI;
 	nLayers = layersi.size();
 
 	//StartMatrixes
@@ -91,7 +87,7 @@ std::vector<double> net::activate(std::vector<double> vals, int layerP) {
 		for (int i = 0; i < vals.size(); i++)
 			tempVals[i] = 0;
 	}
-	tempVals.push_back(1.0);
+	tempVals.push_back(1.0); //Bias value
 	return tempVals;
 }
 
@@ -137,6 +133,7 @@ void net::backpropagate(std::vector<double> eX) {
 	for (int i = nLayers - 2; i > 0; i--)
 		for (int j = 0; j < layers[i]; j++) 
 			Gradient[i - 1][layers[i - 1]][j] = -momentum* Gradient[i - 1][layers[i - 1]][j] +alpha*Deltas[i][j];
+	
 	//Add gradients
 	addGradientT();
 }
@@ -243,7 +240,7 @@ void net::setDataInfo(std::string dataFileN) {
 
 	//Data Files Reading
 	std::ifstream dataFile;
-	dataFile.open("./trainingData/data/" + dataFileN);
+	dataFile.open("./data/trainingData/" + dataFileN);
 
 	if (dataFile.is_open()) {
 		std::vector<double> tempDInput, tempDOutput;

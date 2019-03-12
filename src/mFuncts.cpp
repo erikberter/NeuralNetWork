@@ -1,10 +1,6 @@
 #include "mFuncts.h"
 #include <cmath>
 
-
-
-
-
 int maximumIndex(std::vector<double> outVals) {
 	int indexi = 0;
 	double maxVal = outVals[0];
